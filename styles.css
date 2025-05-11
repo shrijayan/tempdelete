@@ -180,10 +180,31 @@ body {
     margin-bottom: 25px;
 }
 
-.login-btn:hover {
+.login-btn:hover:not(:disabled) {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
 }
+
+.login-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Button states */
+.login-btn.loading {
+    position: relative;
+    pointer-events: none;
+    background-color: var(--primary-color);
+}
+
+.login-btn.success {
+    background-color: var(--success-color);
+}
+
+.login-btn.error {
+    background-color: var(--error-color);
+}
+
 
 /* Divider */
 .divider {

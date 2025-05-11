@@ -176,6 +176,11 @@
     
     // Process form if valid
     if (isUsernameValid && isPasswordValid) {
+      // Show loading state on button
+      elements.loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+      elements.loginBtn.classList.add('loading');
+      elements.loginBtn.disabled = true;
+      
       processLogin(username, password);
     }
   };
@@ -214,6 +219,48 @@
       e.currentTarget.innerHTML = originalContent;
       alert(`${provider} login would be implemented here. This would redirect to the ${provider} authentication page.`);
     }, 1000);
+  };
+
+  /**
+   * Process the login
+   */
+  const processLogin = (username, password) => {
+    // Store username if remember me is checked
+    if (elements.rememberMe.checked) {
+      localStorage.setItem('rememberedUser', username);
+    } else {
+      localStorage.removeItem('rememberedUser');
+    }
+    
+    // Call API
+    simulateApiCall({ username, password })
+      .then(response => {
+        // Show success state
+        elements.loginBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+        elements.loginBtn.classList.remove('loading');
+        elements.loginBtn.classList.add('success');
+        
+        // Reset form after delay
+        setTimeout(() => {
+          alert('Login successful! You would be redirected to the dashboard.');
+          resetForm();
+        }, 1500);
+      })
+      .catch(error => {
+        // Show error state
+        elements.loginBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Try Again';
+        elements.loginBtn.classList.remove('loading');
+        elements.loginBtn.classList.add('error');
+        elements.loginBtn.disabled = false;
+        
+        // Reset button after delay
+        setTimeout(() => {
+          elements.loginBtn.innerHTML = 'Login';
+          elements.loginBtn.classList.remove('error');
+        }, 2000);
+        
+        alert(error.message);
+      });
   };
 
   /**
