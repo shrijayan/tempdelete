@@ -1,15 +1,15 @@
 /* Global Styles */
 :root {
-    --primary-color: #4a6cf7;
-    --primary-hover: #3a5be0;
+    --primary-color: #2563eb;
+    --primary-hover: #1e40af;
     --text-color: #333;
     --light-text: #777;
     --border-color: #e0e0e0;
     --error-color: #f44336;
     --success-color: #4caf50;
-    --background-color: #f5f7ff;
+    --background-color: #f8fafc;
     --white: #ffffff;
-    --shadow: 0 4px 6px rgba(74, 108, 247, 0.1);
+    --shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
     --transition: all 0.3s ease;
 }
 
