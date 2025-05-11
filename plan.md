@@ -10,3 +10,6 @@
   - [x] Form validation
   - [x] Submit handling
 - [x] Test login page functionality
+- [x] Change primary color scheme from blue to purple
+
+SUper

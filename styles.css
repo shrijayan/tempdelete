@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
-    --primary-color: #2563eb;
-    --primary-hover: #1e40af;
+    --primary-color: #8a2be2;
+    --primary-hover: #6a1cb7;
     --text-color: #333;
     --light-text: #777;
     --border-color: #e0e0e0;
@@ -9,7 +9,6 @@
     --success-color: #4caf50;
     --background-color: #f8fafc;
     --white: #ffffff;
-    --shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
     --transition: all 0.3s ease;
 }
 
@@ -128,7 +127,7 @@ body {
 
 .input-group input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
 }
 
 .input-group input::placeholder {
