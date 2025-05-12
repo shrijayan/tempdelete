@@ -75,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to show success message
     function showSuccessMessage() {
+        // Save username to localStorage
+        const username = document.getElementById('username').value;
+        localStorage.setItem('username', username);
+        
         // Hide the form
         loginForm.style.display = 'none';
         
@@ -83,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
         successMessage.className = 'success-message';
         successMessage.innerHTML = `
             <h2>Login Successful!</h2>
-            <p>Welcome back, ${document.getElementById('username').value}!</p>
-            <button id="backToLogin">Back to Login</button>
+            <p>Welcome back, ${username}!</p>
+            <p>Redirecting to your tasks...</p>
         `;
         successMessage.style.textAlign = 'center';
         successMessage.style.padding = '20px';
@@ -94,26 +98,32 @@ document.addEventListener('DOMContentLoaded', function() {
         h2.style.color = '#27ae60';
         h2.style.marginBottom = '15px';
         
-        const button = successMessage.querySelector('button');
-        button.style.backgroundColor = '#4a90e2';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.padding = '10px 15px';
-        button.style.borderRadius = '5px';
-        button.style.marginTop = '20px';
-        button.style.cursor = 'pointer';
-        
-        // Add event listener to the button
-        button.addEventListener('click', function() {
-            // Show the form again
-            loginForm.style.display = 'block';
-            // Clear the form
-            loginForm.reset();
-            // Remove the success message
-            successMessage.remove();
-        });
-        
         // Append success message to the login form container
         document.querySelector('.login-form').appendChild(successMessage);
+        
+        // Create loading animation
+        const loadingDots = document.createElement('div');
+        loadingDots.className = 'loading-dots';
+        loadingDots.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+        loadingDots.style.fontSize = '24px';
+        loadingDots.style.letterSpacing = '8px';
+        loadingDots.style.marginTop = '20px';
+        successMessage.appendChild(loadingDots);
+        
+        // Animate the dots
+        let dots = loadingDots.querySelectorAll('span');
+        let currentDot = 0;
+        
+        const animateInterval = setInterval(function() {
+            dots.forEach(dot => dot.style.opacity = '0.3');
+            dots[currentDot].style.opacity = '1';
+            currentDot = (currentDot + 1) % dots.length;
+        }, 300);
+        
+        // Redirect after 2 seconds
+        setTimeout(function() {
+            clearInterval(animateInterval);
+            window.location.href = 'tasks.html';
+        }, 2000);
     }
 });
