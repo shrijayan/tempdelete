@@ -136,3 +136,45 @@ window.addEventListener('load', () => {
         }, 100);
     }
 });
+
+// Handle social media login buttons
+document.addEventListener('DOMContentLoaded', () => {
+    // Get all social buttons
+    const socialButtons = document.querySelectorAll('.social-btn');
+    
+    // Add click event to each social button
+    socialButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get the class name to identify which social media was clicked
+            const socialType = Array.from(button.classList)
+                .find(className => ['google', 'facebook', 'apple', 'twitter'].includes(className));
+            
+            // Show loading state on the button
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            button.style.pointerEvents = 'none';
+            
+            // Display which social login was selected (for demonstration)
+            console.log(`Logging in with ${socialType}...`);
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // Reset button
+                button.innerHTML = originalHTML;
+                button.style.pointerEvents = 'auto';
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${socialType.charAt(0).toUpperCase() + socialType.slice(1)} login successful!`;
+                successMessage.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+                successMessage.style.color = 'var(--success-color)';
+                successMessage.style.padding = '10px';
+                successMessage.style.borderRadius = '8px';
+                successMessage.style.textAlign = 'center';
+                successMessage.style.marginBottom = '20px';
+                successMessage.style.display = 'flex';
+                successMessage.style.alignItems = 'center';
+                successMessage.style.justifyContent = 'center';

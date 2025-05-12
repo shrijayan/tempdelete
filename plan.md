@@ -8,5 +8,8 @@
   - [x] Apply color scheme (soft blue, white, gray)
   - [x] Design form elements and buttons
 - [x] Add JavaScript for form validation
-- [ ] Test responsive behavior
-- [ ] Final review and optimizations
+- [x] Add social login options
+  - [x] Add social login buttons to HTML
+  - [x] Style social login buttons
+  - [x] Add social login functionality
+- [x] Test responsive behavior

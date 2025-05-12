@@ -194,6 +194,31 @@ form {
 .login-btn:hover {
     background-color: var(--primary-hover);
     box-shadow: 0 6px 8px rgba(74, 144, 226, 0.35);
+
+
+.social-btn i {
+    font-size: 20px;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn.google i {
+    color: #DB4437;
+}
+
+.social-btn.facebook i {
+    color: #4267B2;
+}
+
+.social-btn.apple i {
+    color: #555;
+}
+
+.social-btn.twitter i {
+    color: #1DA1F2;
 }
 
 /* Signup Link */
